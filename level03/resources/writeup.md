@@ -34,5 +34,9 @@ Make sure this file has a "higher" privilege then the user "level03".
 4. Make it executable
 `chmod +x /tmp/echo`
 
-## Run ./level03 again and you've got flag
+Run ./level03 again and you've got flag
+
+## Takeway
+- Tools to read information inside a binary file.  
+- Env injection  
 

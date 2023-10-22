@@ -22,3 +22,8 @@ Use scp to copy file from vm to host machine:
 `john ~/passwd -show`
 The line becomes:
 `flag01:abcdefg:3001:3001::/home/flag/flag01:/bin/bash`
+
+## Takeaway
+- Check "etc/passwd" or "/etc/shadow" file for hashed password info.
+- Usage of "scp" command
+- Usage of "john the ripper"  to crack password

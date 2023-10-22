@@ -21,3 +21,8 @@ But this is not the right password.
 ![Hex Dump](HexDump.png)
 - This shows the ASCII hex code for each char. The code of the dots are "7f" whitch is the DEL key.
 - So the string is actually "ft_wandr{DEL}{DEL}{DEL}NDRel[DEL]L0L" -> "ft_waNDReL0L"
+
+## Takeaway
+- Packet capture  
+- Usage of tcpdump and wireshark to read packet data.  
+- ASCII code
