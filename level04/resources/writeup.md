@@ -2,7 +2,8 @@
 
 ## Perl
 The "level04.pl" file is a perl CGI script.  
-1. The comment `# localhost:4747` gives a hint about the port server is running on  
+1. The comment `# localhost:4747` gives a hint about the port server is running on. I tried to connect to the server via a browser: `http://192.168.56.102:4747` and it's receiving request and send out response.
+
 2. `use CGI qw{param};` loads the CGI module into the script. (The qw{param} part is not necessary. The "param()" function will still work without explicitly include it here.)  
 3. `sub` is acutlly just a function.  And the tricky part is the `print \`echo $y 2>&1\`;` line. It calls the system "echo" command whit the "y" argument.  
 4. `param("x")` means we'll take the value of "x" from the params.  
