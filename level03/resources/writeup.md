@@ -1,6 +1,6 @@
 # level03
 
-## level03 binary
+## level03 executable
 Run the binary file "level03" and got taunted: "Exploit me".
 
 ## Reverse engineering
@@ -16,13 +16,14 @@ It shows that level03 file is an "ELF 32-bit LSB exaeutable", also "not stripped
 
 - strings  
 print the strings of printable characters in files.  
-We can found system() function been called.  
+We can found `setresgid`, `setresuid`, `system`, `getegid`,`geteuid` functions been called.  
 
 - ltrace  
 A library call tracer.  
 Run `ltrace -i ./level03` and we can found this program calling "system()" function to launch "echo" whit the PATH stored in the "env".  
 
 ## Almost the same as "Nebula Challenge" level01
+According to the exploit method found online. We can write a shell script and make the executable run it with the system call.
 Exploit the system() call with env injection.  
 1. Check the owner of the level03 file  
 Make sure this file has a "higher" privilege then the user "level03".  
@@ -33,10 +34,8 @@ Make sure this file has a "higher" privilege then the user "level03".
 `echo "getflag" > /tmp/echo`
 4. Make it executable
 `chmod +x /tmp/echo`
+5. Run ./level03 again and you've got flag
 
-Run ./level03 again and you've got flag
-
-## Takeway
+## Notions 
 - Tools to read information inside a binary file.  
 - Env injection  
-
