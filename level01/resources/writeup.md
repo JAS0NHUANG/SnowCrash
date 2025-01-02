@@ -12,7 +12,7 @@ Important to have a friend as a HACKER.
 ## The "flag01" line in passwd file
 All other lines has their password marked as "x" except the line "flag01":
 `flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash`
-This is the "legacy" and unsecure way of storing password in linux system whitch we can exploit.
+"42hDRfypTqqnw" is not the actual password. It is the "legacy" and unsecure way of storing password in linux system whitch we can exploit.
 
 ## Use `scp`
 Use scp to copy file from vm to host machine:
