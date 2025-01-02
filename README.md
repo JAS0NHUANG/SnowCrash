@@ -10,15 +10,13 @@ Cybersecurity intro project took the name of the novel?
 
 - Watch the [intro video on 42 intra](https://elearning.intra.42.fr/notions/127/subnotions/465/videos/404)
 
-## [level00](/level00)
-- FIND
-- encode
+## VM network setup
+Virtualbox NAT
+Port redirection
 
-## [level01](/level01)
-- passwd
-- scp
-- john
-
-## level02
-
+Protocole : TCP
+Host IP : 127.0.0.1
+Host Port : 4242
+Client IP : 10.0.2.15 (IP in Virtualbox)
+Client Port : 4242 (The open ssh port by default of the iso image)
 
