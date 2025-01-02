@@ -13,11 +13,12 @@ Found this:[Exploit Education - Nebula](https://exploit.education/nebula/) (not 
 - `find -user level00`
 - Got loads of "permission denied" error
 - add `2>/dev/null` to redirect stderr to null device
+- `find -user flag00 2>/dev/null`
 - Found a suspicious file: "/usr/sbin/john"
 - "cdiiddwpgswtgt" is it's content. It is not the password for flag01. Again, GIYF! ^_^
 - [dcode - Caesar Cipher](https://www.dcode.fr/caesar-cipher). Decode with the tool and it gives "nottoohardhere" as the most probable answer.
 - `su` to "flag00" with the password and `getflag`
 
 ## Takeaway
-- Usage of `find` command.
+- Usage of `find` command. 
 - Simple encoding(which is not encryption).
