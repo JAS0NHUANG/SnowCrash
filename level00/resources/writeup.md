@@ -1,7 +1,7 @@
 # level00
 
 ## login with user "level00
-Find no clue at all!
+`FIND` no clue at all!
 
 ## Found out the project intro VIDEO in intra
 "FIND this first file who can run only as flag00..."  
