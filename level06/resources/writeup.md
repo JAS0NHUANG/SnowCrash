@@ -53,15 +53,16 @@ So we can try to create a file. Write some php code inside and try to make this 
 I tried to create a file in /tmp folder as before and write a string mach the pattern(`"/(\[x (.*)\])/e"`).  
 So the command will be like: `echo "[x whatever]" > /tmp/getflag`.  
 Difficult to make php code execute the function. They are all being printed out as string or spit out some syntax error:  
-- '[x system("getflag")]' -> print as string
-- '[x ${system("getflag")}]' -> syntax error
-- '[x {system("getflag")}]' -> print as string
-- '[x ; system("getflag")]' -> print as string
+- '[x system(getflag)]' -> print as string
+- '[x ${system(getflag)}]' -> syntax error
+- '[x {system(getflag)}]' -> print as string
+- '[x ; system(getflag)]' -> print as string
 ... and so on...
 
 Until I found this: [Complex(curly) syntax](https://www.php.net/manual/en/language.types.string.php#language.types.string.parsing.complex)  
 
-- '[x {${system("getflag")}}]' finaly solve the problem.
+- '[x {${system(getflag)}}]' finaly solve the problem.
+- or '[x {${`getflag`}}]'
 
 ## Takeaway
 - regex

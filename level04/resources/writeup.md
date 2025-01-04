@@ -20,8 +20,8 @@ Here we pass `param("x")` into the sub x. So it means we should pass the query s
 ## Command Substitution
 Our goal now is to launch "getflag" with this perl script. If we just do `http://192.168.56.102:4747?x=getflag`. This will just print out "getflag" as a string. So we need do it with command substitution method on linux commands.  
 Two solutions are available:
-- strait command substitution: `x=\`getflag\`` or `$(getflag)` this will call the getflag command and return the result for echo to print out.   
-- Encode ";" as an URI and make the getflag been launched instead being treated as an argument of "echo".  
+- strait command substitution: `x=\`getflag\`` this will call the getflag command and return the result for echo to print out.   
+- Encode ";" as an URI (; == %3B) and make the getflag been launched instead being treated as an argument of "echo".  
 
 ## Send request
 Send a simple GET request via curl or just type the url inside a browser. You will get the flag sent back.  
